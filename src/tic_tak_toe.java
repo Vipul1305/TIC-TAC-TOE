@@ -303,6 +303,7 @@ public class tic_tak_toe extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    // Aulternate Symbol
     private void alterTurn(){
         if (turn.equals("O")){
             turn = "X";
@@ -310,6 +311,7 @@ public class tic_tak_toe extends javax.swing.JFrame {
             turn = "O";
         }
     }
+    // method to change button
     private void buttonFuntion (JButton button){
         if (!(button.getText().equals(""))) return;
         button.setText(turn);
@@ -319,9 +321,11 @@ public class tic_tak_toe extends javax.swing.JFrame {
             button.setForeground(Color.MAGENTA);
         }
         totalBtn++;
-        checkWin();
-        alterTurn();
+        checkWin();// after every press check for winner
+        alterTurn();// and alter button
     }
+    
+    // if Player wins Updating Score Board
     private void perform(JButton buttonX, JButton buttonY, JButton buttonZ){
         buttonX.setBackground(Color.GREEN);
         buttonY.setBackground(Color.GREEN);
@@ -336,6 +340,8 @@ public class tic_tak_toe extends javax.swing.JFrame {
         }
         updateScore();
     }
+    
+    //// Check win Function
     private void checkWin(){
         if (Button1.getText().equals(Button2.getText()) && Button2.getText().equals(Button3.getText()) && Button1.getText() != ""){
             perform(Button1,Button2, Button3);
@@ -358,6 +364,7 @@ public class tic_tak_toe extends javax.swing.JFrame {
             resetKey();
         }
     }
+    //// Exit the game
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
         if (JOptionPane.showConfirmDialog(this, "Would you like to EXIT ?", "TIC TAC TOE", JOptionPane.YES_NO_OPTION )== JOptionPane.YES_OPTION){
             System.exit(0);
@@ -372,7 +379,7 @@ public class tic_tak_toe extends javax.swing.JFrame {
         }else{
             Button1.setForeground(Color.MAGENTA);
         }
-        totalBtn++;
+        totalBtn++;// count to check for draw
         checkWin();
         alterTurn();
     }//GEN-LAST:event_Button1ActionPerformed
@@ -385,9 +392,10 @@ public class tic_tak_toe extends javax.swing.JFrame {
         }else{
             Button2.setForeground(Color.MAGENTA);
         }
-        totalBtn++;
+        totalBtn++;// count to check for draw
         checkWin();
         alterTurn();
+        // after this button i have all upper commend in " buttonFunction(Button2)
     }//GEN-LAST:event_Button2ActionPerformed
 
     private void Button3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button3ActionPerformed
@@ -425,7 +433,9 @@ public class tic_tak_toe extends javax.swing.JFrame {
         buttonFuntion(Button9);
     }//GEN-LAST:event_Button9ActionPerformed
 
+    //// ReSet Functionality
     private void resetKey(){
+        // clear all button text
         Button1.setText("");
         Button2.setText("");
         Button3.setText("");
@@ -435,7 +445,8 @@ public class tic_tak_toe extends javax.swing.JFrame {
         Button7.setText("");
         Button8.setText("");
         Button9.setText("");
-
+        
+        //change all button background to white
         Button1.setBackground(Color.white);
         Button2.setBackground(Color.white);
         Button3.setBackground(Color.white);
@@ -452,6 +463,7 @@ public class tic_tak_toe extends javax.swing.JFrame {
         resetKey();
     }//GEN-LAST:event_resetButtonActionPerformed
 
+    // Updating Score Board
     private void updateScore(){
         scoreX.setText(String.valueOf(xCount));
         scoreO.setText(String.valueOf(oCount));
